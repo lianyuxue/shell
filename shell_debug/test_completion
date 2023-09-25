@@ -1,0 +1,27 @@
+#!/bin/bash
+
+_myscript_completion() {
+  local cur prev opts
+  COMPREPLY=()
+  cur="${COMP_WORDS[COMP_CWORD]}"
+  prev="${COMP_WORDS[COMP_CWORD-1]}"
+  opts="-a -b -h"
+
+  case "${prev}" in
+    -a)
+      # 补全选项-a后面的参数
+      COMPREPLY=($(compgen -W 'arg1 arg2' -- "${cur}"))
+      return 0
+      ;;
+    -b)
+      # 补全选项-b后面的参数
+      COMPREPLY=($(compgen -W 'arg3 arg4' -- "${cur}"))
+      return 0
+      ;;
+    *)
+      # 补全其他选项和命令
+      COMPREPLY=($(compgen -W "${opts}" -- "${cur}"))
+      ;;
+  esac
+}
+complete -F _myscript_completion myscript.sh

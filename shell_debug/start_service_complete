@@ -1,0 +1,15 @@
+complete -F _start_service_complete_func start_service.sh
+
+_start_service_complete_func()   
+{  
+    local cur prev opts  
+    COMPREPLY=()  
+    cur="${COMP_WORDS[COMP_CWORD]}"  
+    prev="${COMP_WORDS[COMP_CWORD-1]}"  
+    opts="start_all start_one restart_all restart_one stop_all stop_one status_all status_one version"                                                                                                                                                                                
+
+    if [[ ${cur} == * ]] ; then  
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )   
+        return 0   
+    fi  
+}
