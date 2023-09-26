@@ -11,10 +11,10 @@ local_dir="/Users/lianyuxue/Desktop/shell/shell_debug"
 remote_dir="/opt"
 
 # 远程IP信息
-sftp_remote='127.0.0.1'
-sftp_user='root'
-sftp_port='8810'
-sftp_password='password'
+sftp_remote=''
+sftp_user=''
+sftp_port=''
+sftp_password=''
 #sftp类型
 sftp_type='put'
 # 执行参数-afpR
@@ -35,7 +35,7 @@ echo "sftp type: $sftp_type"
 for i in "${dir_arrt[@]}"; do
     stati_time_s=$(date +%s)
     echo "-->>start $(date +"%F %T")<<--"
-    /usr/bin/expect <<-EOF
+    /usr/bin/expect << EOF
     set timeout 3
     spawn sftp -P $sftp_port ${sftp_user}@${sftp_remote}
     expect  {

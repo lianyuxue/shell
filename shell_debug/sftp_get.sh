@@ -11,7 +11,7 @@ sftp_user='root'
 sftp_port='8810'
 sftp_password='password'
 #sftp类型
-sftp_type='put'
+sftp_type='get'
 # 执行参数-afpR
 sftp_arg='-fpR'
 # 循环目录
@@ -28,6 +28,7 @@ fi
 echo "遍历目录: ${dir_arrt[*]}"
 echo "sftp type: $sftp_type"
 for i in "${dir_arrt[@]}"; do
+    
     stati_time_s=$(date +%s)
     echo "-->>start $(date +"%F %T")<<--"
     /usr/bin/expect << EOF
