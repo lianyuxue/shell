@@ -11,7 +11,7 @@ sftp_user='root'
 sftp_port='8810'
 sftp_password='password'
 #sftp类型
-sftp_type='get'
+sftp_type="${SFTP_TYPE:-get}"
 # 执行参数-afpR
 sftp_arg='-fpR'
 # 循环目录
